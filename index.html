@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LoveFable AI — Turn Personal Messages into Animated Stories</title>
+    <meta name="description" content="Transform your heartfelt personal messages into beautifully narrated, animated video stories with AI-generated scenes, music, and voice narration. Free to use." />
+    <meta name="theme-color" content="#ec4899" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="LoveFable AI — Animated Love Stories from Your Messages" />
+    <meta property="og:description" content="Turn personal messages into short narrated animated video fables with Gemini AI, Web Audio music, and 9 visual moods." />
+    <meta property="og:url" content="https://lovefable.ai" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LoveFable AI — Animated Love Stories" />
+    <meta name="twitter:description" content="Transform heartfelt messages into beautifully narrated, animated video stories." />
+
+    <!-- Favicon (heart emoji as SVG data URI) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💖</text></svg>" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-rose-50/40 text-slate-800 font-sans antialiased selection:bg-pink-200 selection:text-pink-900">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>
+

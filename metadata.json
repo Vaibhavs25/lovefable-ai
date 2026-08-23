@@ -1,0 +1,6 @@
+{
+  "name": "LoveFable AI",
+  "description": "Turn personal messages into romantic, animated, narrated video stories with custom visual moods and interactive playback.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
