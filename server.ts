@@ -55,7 +55,7 @@ Instructions:
 3. Each scene must have narrationText (1-2 sentences of rhythmic, spoken narration line), a visualMood chosen from ['starlight', 'falling_petals', 'rain', 'sunrise', 'fireflies', 'floating_hearts', 'aurora', 'soft_bokeh', 'autumn_breeze'], duration between 8 and 14 seconds, emotionPrompt, a valid CSS gradient string for bgGradient (e.g. "linear-gradient(to bottom, #fce7f3, #fbcfe8)"), a hex accent color, and a short memorable keyQuote.`;
 
       const response = await ai.models.generateContent({
-        model: "gemini-3.6-flash",
+        model: "gemini-2.5-flash",
         contents: prompt,
         config: {
           systemInstruction: "You are LoveFable AI, a master director of romantic, sentimental, and emotional animated storyboards. Always respond in valid JSON matching the requested schema.",
@@ -130,12 +130,13 @@ Instructions:
     }
   });
 
-  // Initialize Stripe with a placeholder if the key is missing to prevent server crash on boot
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_placeholder_key_replace_me_in_env");
+  // Initialize Stripe
+  const stripeSecret = process.env.STRIPE_SECRET_KEY;
+  const stripe = stripeSecret ? new Stripe(stripeSecret) : null;
 
   app.post("/api/create-checkout-session", async (req, res) => {
     try {
-      if (!process.env.STRIPE_SECRET_KEY || process.env.STRIPE_SECRET_KEY.includes("placeholder")) {
+      if (!stripe) {
         return res.status(500).json({ error: "Stripe configuration is missing. Add your STRIPE_SECRET_KEY to .env." });
       }
 
